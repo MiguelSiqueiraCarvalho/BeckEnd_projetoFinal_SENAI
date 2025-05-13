@@ -37,6 +37,14 @@ public class ProdutoService {
             produtoSistema.setProNome(produto.getProNome());
             produtoSistema.setProPrecoCusto(produto.getProPrecoCusto());
             produtoSistema.setProPrecoVenda(produto.getProPrecoVenda());
+            produtoSistema.setProQtdEstoque(produto.getProQtdEstoque());
+            produtoSistema.setProCategoria(produto.getProCategoria());
+            produtoSistema.setProCodigoBarras(produto.getProCodigoBarras());
+            produtoSistema.setProMarca(produto.getProMarca());
+            produtoSistema.setProUnidadeMedida(produto.getProUnidadeMedida());
+            produtoSistema.setProStatus(produto.getProStatus());
+            produtoSistema.setProDataCadastro(produto.getProDataCadastro());
+            produtoSistema.setProDataAtt(produto.getProDataAtt());
             repository.save(produtoSistema);
             return true;
         }
