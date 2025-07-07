@@ -16,6 +16,7 @@ public class Cliente implements Serializable {
     @Column(name = "CLI_ID")
     private Long cliId;
 
+    @NotBlank(message = "Nome é obrigatório")
     @Size(max = 100, message = "Nome deve ter no máximo 100 caracteres")
     @Column(name = "CLI_NOME", nullable = false, length = 100)
     private String cliNome;
@@ -36,15 +37,32 @@ public class Cliente implements Serializable {
     @Column(name = "CLI_TELEFONE", nullable = false, length = 14)
     private String cliTelefone;
 
+
+    @Column(name = "CLI_END_RUA", nullable = false, length = 100)
+    private String cliEndRua;
+
+    @Column(name = "CLI_END_CIDADE", nullable = false, length = 100)
+    private String cliEndCidade;
+
+    @Column(name = "CLI_END_NUMERO", nullable = false, length = 100)
+    private String cliEndNum;
+
+    @Column(name = "CLI_END_ESTADO", nullable = false, length = 100)
+    private String cliEndEstado;
+
     public Cliente() {
     }
 
-    public Cliente(Long cliId, String cliNome, String cliCpf, String cliEmail, String cliTelefone) {
+    public Cliente(Long cliId, String cliNome, String cliCpf, String cliEmail, String cliTelefone, String cliEndRua, String cliEndCidade, String cliEndNum, String cliEndEstado) {
         this.cliId = cliId;
         this.cliNome = cliNome;
         this.cliCpf = cliCpf;
         this.cliEmail = cliEmail;
         this.cliTelefone = cliTelefone;
+        this.cliEndRua = cliEndRua;
+        this.cliEndCidade = cliEndCidade;
+        this.cliEndNum = cliEndNum;
+        this.cliEndEstado = cliEndEstado;
     }
 
     public Long getCliId() {
@@ -85,5 +103,37 @@ public class Cliente implements Serializable {
 
     public void setCliTelefone(String cliTelefone) {
         this.cliTelefone = cliTelefone;
+    }
+
+    public String getCliEndRua() {
+        return cliEndRua;
+    }
+
+    public void setCliEndRua(String cliEndRua) {
+        this.cliEndRua = cliEndRua;
+    }
+
+    public String getCliEndCidade() {
+        return cliEndCidade;
+    }
+
+    public void setCliEndCidade(String cliEndCidade) {
+        this.cliEndCidade = cliEndCidade;
+    }
+
+    public String getCliEndNum() {
+        return cliEndNum;
+    }
+
+    public void setCliEndNum(String cliEndNum) {
+        this.cliEndNum = cliEndNum;
+    }
+
+    public String getCliEndEstado() {
+        return cliEndEstado;
+    }
+
+    public void setCliEndEstado(String cliEndEstado) {
+        this.cliEndEstado = cliEndEstado;
     }
 }

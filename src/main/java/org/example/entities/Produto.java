@@ -2,159 +2,109 @@ package org.example.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PRO_ID")
-    private Long proId;
+    @Column(name = "PROD_ID")
+    private Long prodId;
 
-    @Column(name = "PRO_NOME")
-    private String proNome;
+    @Column(name = "PROD_NOME")
+    private String prodNome;
 
-    @Column(name = "PRO_PRECO_CUSTO", precision = 10, scale = 2)
-    private Double proPrecoCusto;
+    @Column(name = "PROD_PRECO_CUSTO", precision = 10, scale = 2)
+    private Double prodPrecoCusto;
 
-    @Column(name = "PRO_PRECO_VENDA", precision = 10, scale = 2)
-    private Double proPrecoVenda;
+    @Column(name = "PROD_PRECO_VENDA", precision = 10, scale = 2)
+    private Double prodPrecoVenda;
 
-    @Column(name = "PRO_QTD_ESTOQUE", precision = 10, scale = 2)
-    private Long proQtdEstoque;
+    @Column(name = "PROD_QTD_ESTOQUE", precision = 10, scale = 2)
+    private Long prodQtdEstoque;
 
-    @Column(name = "PRO_CATEGORIA", precision = 10, scale = 2)
-    private String proCategoria;
+    @Column(name = "PROD_CATEGORIA", precision = 10, scale = 2)
+    private String prodCategoria;
 
-    @Column(name = "PRO_CODIGO_BARRAS", precision = 10, scale = 2)
-    private String proCodigoBarras;
+    @Column(name = "PROD_MARCA", precision = 10, scale = 2)
+    private String prodMarca;
 
-    @Column(name = "PRO_MARCA", precision = 10, scale = 2)
-    private String proMarca;
 
-    @Column(name = "PRO_UNIDADE_MEDIDA", precision = 10, scale = 2)
-    private String proUnidadeMedida;
+    @ManyToMany
+    @JoinTable( name = "Fornecedor_Produto", joinColumns = @JoinColumn( name = "PROD_ID"), inverseJoinColumns = @JoinColumn(name = "FOR_ID"))
+    private Set<Fornecedor> fornecedores;
 
-    @Column(name = "PRO_STATUS", precision = 10, scale = 2)
-    private String proStatus;
-
-    @Column(name = "PRO_DATA_CADASTRO", precision = 10, scale = 2)
-    private String proDataCadastro;
-
-    @Column(name = "PRO_DATA_ATT", precision = 10, scale = 2)
-    private String proDataAtt;
+    @ManyToMany
+    @JoinTable( name = "Prod_venda", joinColumns = @JoinColumn( name = "PROD_ID"), inverseJoinColumns = @JoinColumn(name = "FOR_ID"))
+    private Set<Venda> vendas;
 
     public Produto() {
     }
 
-    public Produto(Long proId, String proNome, Double proPrecoCusto, Double proPrecoVenda, Long proQtdEstoque, String proCategoria, String proCodigoBarras, String proMarca, String proUnidadeMedida, String proStatus, String proDataCadastro, String proDataAtt) {
-        this.proId = proId;
-        this.proNome = proNome;
-        this.proPrecoCusto = proPrecoCusto;
-        this.proPrecoVenda = proPrecoVenda;
-        this.proQtdEstoque = proQtdEstoque;
-        this.proCategoria = proCategoria;
-        this.proCodigoBarras = proCodigoBarras;
-        this.proMarca = proMarca;
-        this.proUnidadeMedida = proUnidadeMedida;
-        this.proStatus = proStatus;
-        this.proDataCadastro = proDataCadastro;
-        this.proDataAtt = proDataAtt;
+    public Produto(Long prodId, String prodNome, Double prodPrecoCusto, Double prodPrecoVenda, Long prodQtdEstoque, String prodCategoria, String prodMarca) {
+        this.prodId = prodId;
+        this.prodNome = prodNome;
+        this.prodPrecoCusto = prodPrecoCusto;
+        this.prodPrecoVenda = prodPrecoVenda;
+        this.prodQtdEstoque = prodQtdEstoque;
+        this.prodCategoria = prodCategoria;
+        this.prodMarca = prodMarca;
     }
 
-    public Long getProId() {
-        return proId;
+    public Long getProdId() {
+        return prodId;
     }
 
-    public void setProId(Long proId) {
-        this.proId = proId;
+    public void setProdId(Long prodId) {
+        this.prodId = prodId;
     }
 
-    public String getProNome() {
-        return proNome;
+    public String getProdNome() {
+        return prodNome;
     }
 
-    public void setProNome(String proNome) {
-        this.proNome = proNome;
+    public void setProdNome(String prodNome) {
+        this.prodNome = prodNome;
     }
 
-    public Double getProPrecoCusto() {
-        return proPrecoCusto;
+    public Double getProdPrecoCusto() {
+        return prodPrecoCusto;
     }
 
-    public void setProPrecoCusto(Double proPrecoCusto) {
-        this.proPrecoCusto = proPrecoCusto;
+    public void setProdPrecoCusto(Double prodPrecoCusto) {
+        this.prodPrecoCusto = prodPrecoCusto;
     }
 
-    public Double getProPrecoVenda() {
-        return proPrecoVenda;
+    public Double getProdPrecoVenda() {
+        return prodPrecoVenda;
     }
 
-    public void setProPrecoVenda(Double proPrecoVenda) {
-        this.proPrecoVenda = proPrecoVenda;
+    public void setProdPrecoVenda(Double prodPrecoVenda) {
+        this.prodPrecoVenda = prodPrecoVenda;
     }
 
-    public Long getProQtdEstoque() {
-        return proQtdEstoque;
+    public Long getProdQtdEstoque() {
+        return prodQtdEstoque;
     }
 
-    public void setProQtdEstoque(Long proQtdEstoque) {
-        this.proQtdEstoque = proQtdEstoque;
+    public void setProdQtdEstoque(Long prodQtdEstoque) {
+        this.prodQtdEstoque = prodQtdEstoque;
     }
 
-    public String getProCategoria() {
-        return proCategoria;
+    public String getProdCategoria() {
+        return prodCategoria;
     }
 
-    public void setProCategoria(String proCategoria) {
-        this.proCategoria = proCategoria;
+    public void setProdCategoria(String prodCategoria) {
+        this.prodCategoria = prodCategoria;
     }
 
-    public String getProCodigoBarras() {
-        return proCodigoBarras;
+    public String getProdMarca() {
+        return prodMarca;
     }
 
-    public void setProCodigoBarras(String proCodigoBarras) {
-        this.proCodigoBarras = proCodigoBarras;
-    }
-
-    public String getProMarca() {
-        return proMarca;
-    }
-
-    public void setProMarca(String proMarca) {
-        this.proMarca = proMarca;
-    }
-
-    public String getProUnidadeMedida() {
-        return proUnidadeMedida;
-    }
-
-    public void setProUnidadeMedida(String proUnidadeMedida) {
-        this.proUnidadeMedida = proUnidadeMedida;
-    }
-
-    public String getProStatus() {
-        return proStatus;
-    }
-
-    public void setProStatus(String proStatus) {
-        this.proStatus = proStatus;
-    }
-
-    public String getProDataCadastro() {
-        return proDataCadastro;
-    }
-
-    public void setProDataCadastro(String proDataCadastro) {
-        this.proDataCadastro = proDataCadastro;
-    }
-
-    public String getProDataAtt() {
-        return proDataAtt;
-    }
-
-    public void setProDataAtt(String proDataAtt) {
-        this.proDataAtt = proDataAtt;
+    public void setProdMarca(String prodMarca) {
+        this.prodMarca = prodMarca;
     }
 }

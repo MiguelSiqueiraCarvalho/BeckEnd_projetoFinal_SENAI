@@ -34,17 +34,12 @@ public class ProdutoService {
         Optional<Produto> optionalProduto = repository.findById(id);
         if (optionalProduto.isPresent()) {
             Produto produtoSistema = optionalProduto.get();
-            produtoSistema.setProNome(produto.getProNome());
-            produtoSistema.setProPrecoCusto(produto.getProPrecoCusto());
-            produtoSistema.setProPrecoVenda(produto.getProPrecoVenda());
-            produtoSistema.setProQtdEstoque(produto.getProQtdEstoque());
-            produtoSistema.setProCategoria(produto.getProCategoria());
-            produtoSistema.setProCodigoBarras(produto.getProCodigoBarras());
-            produtoSistema.setProMarca(produto.getProMarca());
-            produtoSistema.setProUnidadeMedida(produto.getProUnidadeMedida());
-            produtoSistema.setProStatus(produto.getProStatus());
-            produtoSistema.setProDataCadastro(produto.getProDataCadastro());
-            produtoSistema.setProDataAtt(produto.getProDataAtt());
+            produtoSistema.setProdNome(produto.getProdNome());
+            produtoSistema.setProdPrecoCusto(produto.getProdPrecoCusto());
+            produtoSistema.setProdPrecoVenda(produto.getProdPrecoVenda());
+            produtoSistema.setProdQtdEstoque(produto.getProdQtdEstoque());
+            produtoSistema.setProdCategoria(produto.getProdCategoria());
+            produtoSistema.setProdMarca(produto.getProdMarca());
             repository.save(produtoSistema);
             return true;
         }

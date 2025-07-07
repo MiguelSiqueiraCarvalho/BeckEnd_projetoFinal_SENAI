@@ -1,9 +1,7 @@
 package org.example.services;
 
 import org.example.entities.Cliente;
-import org.example.entities.FormaPagamento;
 import org.example.repositories.ClienteRepository;
-import org.example.repositories.FormaPagamentoRepository;
 import org.example.services.exeptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Fornecedor implements Serializable {
@@ -31,6 +32,9 @@ public class Fornecedor implements Serializable {
     @Size(max = 100, message = "Razão social deve ter no máximo 100 caracteres")
     @Column(name = "FOR_RAZAO_SOCIAL")
     private String forRazaoSocial;
+
+    @ManyToMany(mappedBy = "Fornecedor")
+    private Set<Produto> produtos;
 
     public Fornecedor() {
     }
