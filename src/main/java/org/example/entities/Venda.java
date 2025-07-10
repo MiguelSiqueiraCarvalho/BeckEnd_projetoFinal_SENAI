@@ -23,7 +23,7 @@ public class Venda implements Serializable {
     @Column(name = "VENDA_DATA", nullable = false, length = 30)
     private String vendaData;
 
-    @ManyToMany(mappedBy = "Venda")
+    @ManyToMany(mappedBy = "venda")
     private Set<Produto> produtos;
 
     @ManyToOne

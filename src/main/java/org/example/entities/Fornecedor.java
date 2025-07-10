@@ -33,7 +33,7 @@ public class Fornecedor implements Serializable {
     @Column(name = "FOR_RAZAO_SOCIAL")
     private String forRazaoSocial;
 
-    @ManyToMany(mappedBy = "Fornecedor")
+    @ManyToMany(mappedBy = "fornecedor")
     private Set<Produto> produtos;
 
     public Fornecedor() {
