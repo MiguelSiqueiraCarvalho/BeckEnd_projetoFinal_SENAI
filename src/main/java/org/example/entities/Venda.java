@@ -16,7 +16,7 @@ public class Venda implements Serializable {
     private Long vendaId;
 
     @NotBlank(message = "Forma de pagamento é obrigatório")
-    @Column(name = "VENDA_FORMA_PAGAMENTO", length = 40)
+    @Column(name = "VENDA_FORMA_PAGAMENTO", length = 40, nullable = false)
     private String vendaFomaPagamento;
 
     @NotBlank(message = "Data é obrigatório")
@@ -27,11 +27,11 @@ public class Venda implements Serializable {
     private Set<Produto> produtos;
 
     @ManyToOne
-    @JoinColumn(name = "CLI_ID")
+    @JoinColumn(name = "CLI_ID", nullable = false)
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "FUN_ID")
+    @JoinColumn(name = "FUN_ID", nullable = false)
     private Funcionarios funcionarios;
 
 

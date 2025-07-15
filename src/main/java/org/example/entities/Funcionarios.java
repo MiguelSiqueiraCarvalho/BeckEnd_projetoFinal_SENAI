@@ -27,7 +27,7 @@ public class Funcionarios implements Serializable {
     private String funTelefone;
 
     @NotBlank(message = "CPF é obrigatório")
-    @Column(name = "FUN_CPF", nullable = false, length = 11)
+    @Column(name = "FUN_CPF", nullable = false, length = 11, unique = true)
     private String funCPF;
 
     public Funcionarios() {

@@ -20,21 +20,18 @@ public class Fornecedor implements Serializable {
 
     @NotBlank(message = "Nome fantasia é obrigatório")
     @Size(max = 100, message = "Nome deve ter no maximo 100 caracteres")
-    @Column(name = "FOR_NOME_FANTASIA")
+    @Column(name = "FOR_NOME_FANTASIA", nullable = false)
     private String forNomeFantasia;
 
     @NotBlank(message = "CNPJ é obrigatório")
     @CNPJ(message = "CNPJ inválido")
-    @Column(name = "FOR_CNPJ", unique = true, length = 14)
+    @Column(name = "FOR_CNPJ", unique = true, length = 20, nullable = false)
     private String forCnpj;
 
     @NotBlank(message = "Razão social é obrigatório")
     @Size(max = 100, message = "Razão social deve ter no máximo 100 caracteres")
-    @Column(name = "FOR_RAZAO_SOCIAL")
+    @Column(name = "FOR_RAZAO_SOCIAL", nullable = false)
     private String forRazaoSocial;
-
-    @ManyToMany(mappedBy = "fornecedor")
-    private Set<Produto> produtos;
 
     public Fornecedor() {
     }

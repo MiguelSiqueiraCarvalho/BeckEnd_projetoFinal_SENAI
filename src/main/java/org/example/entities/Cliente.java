@@ -38,16 +38,16 @@ public class Cliente implements Serializable {
     private String cliTelefone;
 
 
-    @Column(name = "CLI_END_RUA", nullable = false, length = 100)
+    @Column(name = "CLI_END_RUA", nullable = true, length = 100)
     private String cliEndRua;
 
-    @Column(name = "CLI_END_CIDADE", nullable = false, length = 100)
+    @Column(name = "CLI_END_CIDADE", nullable = true, length = 100)
     private String cliEndCidade;
 
-    @Column(name = "CLI_END_NUMERO", nullable = false, length = 100)
+    @Column(name = "CLI_END_NUMERO", nullable = true, length = 100)
     private String cliEndNum;
 
-    @Column(name = "CLI_END_ESTADO", nullable = false, length = 100)
+    @Column(name = "CLI_END_ESTADO", nullable = true, length = 100)
     private String cliEndEstado;
 
     public Cliente() {
