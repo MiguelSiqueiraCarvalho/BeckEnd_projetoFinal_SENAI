@@ -1,10 +1,8 @@
 package org.example.resources;
 
-import org.example.entities.Funcionarios;
+import org.example.entities.Funcionario;
 import org.example.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,27 +18,27 @@ public class FuncionarioResource {
     private FuncionarioService funcionarioService;
 
     @GetMapping
-    public ResponseEntity<List<Funcionarios>> getAll() {
-        List<Funcionarios> funcoes = funcionarioService.getAll();
+    public ResponseEntity<List<Funcionario>> getAll() {
+        List<Funcionario> funcoes = funcionarioService.getAll();
         return ResponseEntity.ok(funcoes);
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Funcionarios> findById(@PathVariable Long id) {
-        Funcionarios obj = funcionarioService.findById(id);
+    public ResponseEntity<Funcionario> findById(@PathVariable Long id) {
+        Funcionario obj = funcionarioService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity<Funcionarios> insert(@RequestBody Funcionarios funcionarios) {
-        Funcionarios createdFuncionarios = funcionarioService.insert(funcionarios);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdFuncionarios);
+    public ResponseEntity<Funcionario> insert(@RequestBody Funcionario funcionario) {
+        Funcionario createdFuncionario = funcionarioService.insert(funcionario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdFuncionario);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Funcionarios funcionarios) {
-        if (funcionarioService.update(id, funcionarios)) {
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Funcionario funcionario) {
+        if (funcionarioService.update(id, funcionario)) {
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();

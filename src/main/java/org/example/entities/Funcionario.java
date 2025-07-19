@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-public class Funcionarios implements Serializable {
+public class Funcionario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,26 +14,26 @@ public class Funcionarios implements Serializable {
     private Long funId;
 
     @NotBlank(message = "Nome é obrigatório")
-    @Size(max = 100, message = "Nome deve ter no máximo 100 caracteres")
-    @Column(name = "FUN_NOME", nullable = false, length = 100)
+    @Size(max =50, message = "Nome deve ter no máximo 50 caracteres")
+    @Column(name = "FUN_NOME", nullable = false, length = 50)
     private String funNome;
 
     @NotBlank(message = "Cargo é obrigatório")
-    @Column(name = "FUN_CARGO", nullable = false, length = 100)
+    @Column(name = "FUN_CARGO", nullable = false, length = 50)
     private String funCargo;
 
     @NotBlank(message = "Telefone é obrigatório")
-    @Column(name = "FUN_TELEFONE", nullable = false, length = 30)
+    @Column(name = "FUN_TELEFONE", nullable = false, length = 15)
     private String funTelefone;
 
     @NotBlank(message = "CPF é obrigatório")
-    @Column(name = "FUN_CPF", nullable = false, length = 11, unique = true)
+    @Column(name = "FUN_CPF", nullable = false, length = 14, unique = true)
     private String funCPF;
 
-    public Funcionarios() {
+    public Funcionario() {
     }
 
-    public Funcionarios(Long funId, String funNome, String funCargo, String funTelefone, String funCPF) {
+    public Funcionario(Long funId, String funNome, String funCargo, String funTelefone, String funCPF) {
         this.funId = funId;
         this.funNome = funNome;
         this.funCargo = funCargo;

@@ -17,13 +17,13 @@ public class Cliente implements Serializable {
     private Long cliId;
 
     @NotBlank(message = "Nome é obrigatório")
-    @Size(max = 100, message = "Nome deve ter no máximo 100 caracteres")
-    @Column(name = "CLI_NOME", nullable = false, length = 100)
+    @Size(max = 100, message = "Nome deve ter no máximo 50 caracteres")
+    @Column(name = "CLI_NOME", nullable = false, length = 50)
     private String cliNome;
 
     @NotBlank(message = "CPF é obrigatório")
     @CPF(message = "CPF inválido")
-    @Column(name = "CLI_CPF",nullable = false, unique = true, length = 11)
+    @Column(name = "CLI_CPF",nullable = false, unique = true, length = 14)
     private String cliCpf;
 
     @NotBlank(message = "Email é obrigatório")
@@ -33,8 +33,8 @@ public class Cliente implements Serializable {
     private String cliEmail;
 
     @NotBlank(message = "Telefone é obrogatório")
-    @Size(max = 14, message = "Telefone deve ter no áximo 14 caracteres")
-    @Column(name = "CLI_TELEFONE", nullable = false, length = 14)
+    @Size(max = 15, message = "Telefone deve ter no áximo 15 caracteres")
+    @Column(name = "CLI_TELEFONE", nullable = false, length = 15)
     private String cliTelefone;
 
 

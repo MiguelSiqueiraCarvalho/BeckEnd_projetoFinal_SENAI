@@ -1,6 +1,6 @@
 package org.example.services;
 
-import org.example.entities.Funcionarios;
+import org.example.entities.Funcionario;
 import org.example.repositories.FuncionarioRepository;
 import org.example.services.exeptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,28 +15,28 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repository;
 
-    public List<Funcionarios> getAll() {
+    public List<Funcionario> getAll() {
         return repository.findAll();
     }
 
-    public Funcionarios findById(Long id) {
-        Optional<Funcionarios> obj = repository.findById(id);
+    public Funcionario findById(Long id) {
+        Optional<Funcionario> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Funcionarios insert(Funcionarios funcionarios) {
-        return repository.save(funcionarios);
+    public Funcionario insert(Funcionario funcionario) {
+        return repository.save(funcionario);
     }
 
-    public boolean update(Long id, Funcionarios funcionarios) {
-        Optional<Funcionarios> optionalFuncionarios = repository.findById(id);
+    public boolean update(Long id, Funcionario funcionario) {
+        Optional<Funcionario> optionalFuncionarios = repository.findById(id);
         if (optionalFuncionarios.isPresent()) {
-            Funcionarios funcionariosSistema = optionalFuncionarios.get();
-            funcionariosSistema.setFunNome(funcionarios.getFunNome());
-            funcionariosSistema.setFunCPF(funcionarios.getFunCPF());
-            funcionariosSistema.setFunCargo(funcionarios.getFunCargo());
-            funcionariosSistema.setFunTelefone(funcionarios.getFunTelefone());
-            repository.save(funcionariosSistema);
+            Funcionario funcionarioSistema = optionalFuncionarios.get();
+            funcionarioSistema.setFunNome(funcionario.getFunNome());
+            funcionarioSistema.setFunCPF(funcionario.getFunCPF());
+            funcionarioSistema.setFunCargo(funcionario.getFunCargo());
+            funcionarioSistema.setFunTelefone(funcionario.getFunTelefone());
+            repository.save(funcionarioSistema);
             return true;
         }
         return false;

@@ -1,9 +1,7 @@
 package org.example.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -32,7 +30,7 @@ public class Venda implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "FUN_ID", nullable = false)
-    private Funcionarios funcionarios;
+    private Funcionario funcionario;
 
 
     public Venda() {
