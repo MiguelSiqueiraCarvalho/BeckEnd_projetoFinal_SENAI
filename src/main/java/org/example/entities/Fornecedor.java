@@ -25,7 +25,7 @@ public class Fornecedor implements Serializable {
 
     @NotBlank(message = "CNPJ é obrigatório")
     @CNPJ(message = "CNPJ inválido")
-    @Column(name = "FOR_CNPJ", unique = true, length = 20, nullable = false)
+    @Column(name = "FOR_CNPJ", unique = true, length = 18, nullable = false)
     private String forCnpj;
 
     @NotBlank(message = "Razão social é obrigatório")
