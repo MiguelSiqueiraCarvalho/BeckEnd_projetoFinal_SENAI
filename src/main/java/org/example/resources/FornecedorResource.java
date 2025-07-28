@@ -25,7 +25,6 @@ public class FornecedorResource {
         return ResponseEntity.ok(funcoes);
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<Fornecedor> findById(@PathVariable Long id) {
         Fornecedor obj = fornecedorService.findById(id);

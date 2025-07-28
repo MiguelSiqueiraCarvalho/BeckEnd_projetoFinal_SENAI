@@ -15,11 +15,15 @@ public class Venda implements Serializable {
 
     @NotBlank(message = "Forma de pagamento é obrigatório")
     @Column(name = "VENDA_FORMA_PAGAMENTO", length = 40, nullable = false)
-    private String vendaFomaPagamento;
+    private String vendaFormaPagamento;
 
     @NotBlank(message = "Data é obrigatório")
     @Column(name = "VENDA_DATA", nullable = false, length = 30)
     private String vendaData;
+
+    @NotBlank(message = "Valor é obrigatorio")
+    @Column(name = "VENDA_VALOR", nullable = false, length = 30000)
+    private Double vendaValor;
 
     @ManyToMany(mappedBy = "venda")
     private Set<Produto> produtos;
@@ -36,10 +40,11 @@ public class Venda implements Serializable {
     public Venda() {
     }
 
-    public Venda(Long vendaId, String vendaFomaPagamento, String vendaData) {
+    public Venda(Long vendaId, String vendaFormaPagamento, String vendaData, Double vendaValor) {
         this.vendaId = vendaId;
-        this.vendaFomaPagamento = vendaFomaPagamento;
+        this.vendaFormaPagamento = vendaFormaPagamento;
         this.vendaData = vendaData;
+        this.vendaValor = vendaValor;
     }
 
     public Long getVendaId() {
@@ -50,12 +55,12 @@ public class Venda implements Serializable {
         this.vendaId = vendaId;
     }
 
-    public String getVendaFomaPagamento() {
-        return vendaFomaPagamento;
+    public String getVendaFormaPagamento() {
+        return vendaFormaPagamento;
     }
 
-    public void setVendaFomaPagamento(String vendaFomaPagamento) {
-        this.vendaFomaPagamento = vendaFomaPagamento;
+    public void setVendaFormaPagamento(String vendaFormaPagamento) {
+        this.vendaFormaPagamento = vendaFormaPagamento;
     }
 
     public String getVendaData() {
@@ -65,4 +70,10 @@ public class Venda implements Serializable {
     public void setVendaData(String vendaData) {
         this.vendaData = vendaData;
     }
+
+    public Double getVendaValor() { return vendaValor;}
+
+    public void setVendaValor(Double vendaValor) { this.vendaValor = vendaValor;}
+
+
 }

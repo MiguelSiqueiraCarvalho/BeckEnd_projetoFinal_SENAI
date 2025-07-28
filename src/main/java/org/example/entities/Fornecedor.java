@@ -28,6 +28,11 @@ public class Fornecedor implements Serializable {
     @Column(name = "FOR_CNPJ", unique = true, length = 18, nullable = false)
     private String forCnpj;
 
+    @NotBlank(message = "Telefone é obrigatório")
+    @CNPJ(message = "Telefone inválido")
+    @Column(name = "FOR_TELEFONE", length = 15, nullable = false)
+    private String forTelefone;
+
     @NotBlank(message = "Razão social é obrigatório")
     @Size(max = 100, message = "Razão social deve ter no máximo 100 caracteres")
     @Column(name = "FOR_RAZAO_SOCIAL", nullable = false)
@@ -36,11 +41,12 @@ public class Fornecedor implements Serializable {
     public Fornecedor() {
     }
 
-    public Fornecedor(Long forId, String forNome, String forNomeFantasia, String forCnpj, String forRazaoSocial) {
+    public Fornecedor(Long forId, String forNome, String forNomeFantasia, String forCnpj, String forRazaoSocial, String forTelefone) {
         this.forId = forId;
         this.forNomeFantasia = forNomeFantasia;
         this.forCnpj = forCnpj;
         this.forRazaoSocial = forRazaoSocial;
+        this.forTelefone = forTelefone;
     }
 
     public Long getForId() {
@@ -75,4 +81,7 @@ public class Fornecedor implements Serializable {
         this.forRazaoSocial = forRazaoSocial;
     }
 
+    public String getForTelefone() { return forTelefone; }
+
+    public void setForTelefone(String forTelefone) { this.forTelefone = forTelefone;}
 }

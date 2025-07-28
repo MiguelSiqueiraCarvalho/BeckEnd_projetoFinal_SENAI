@@ -32,8 +32,9 @@ public class VendaService {
         Optional<Venda> optionalVenda = repository.findById(id);
         if (optionalVenda.isPresent()) {
             Venda vendaSistema = optionalVenda.get();
-            vendaSistema.setVendaFomaPagamento(venda.getVendaFomaPagamento());
+            vendaSistema.setVendaFormaPagamento(venda.getVendaFormaPagamento());
             vendaSistema.setVendaData(venda.getVendaData());
+            vendaSistema.setVendaValor(venda.getVendaValor());
             repository.save(vendaSistema);
             return true;
         }

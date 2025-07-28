@@ -35,6 +35,7 @@ public class FornecedorService {
             fornecedorSistema.setForCnpj(fornecedor.getForCnpj());
             fornecedorSistema.setForNomeFantasia(fornecedor.getForNomeFantasia());
             fornecedorSistema.setForRazaoSocial(fornecedor.getForRazaoSocial());
+            fornecedorSistema.setForTelefone(fornecedor.getForTelefone());
             repository.save(fornecedorSistema);
             return true;
         }
