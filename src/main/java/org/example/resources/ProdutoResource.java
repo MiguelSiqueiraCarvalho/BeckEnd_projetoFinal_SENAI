@@ -25,7 +25,11 @@ public class ProdutoResource {
         return ResponseEntity.ok(funcoes);
     }
 
-
+    @GetMapping("/estoque/total")
+    public ResponseEntity<Long> getTotalEstoque() {
+        Long total = produtoService.getTotalEstoque();
+        return ResponseEntity.ok(total);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Produto> findById(@PathVariable Long id) {
         Produto obj = produtoService.findById(id);

@@ -23,6 +23,12 @@ public class ProdutoService {
         return repository.findAll();
     }
 
+    public Long getTotalEstoque() {
+        return repository.findAll()
+                .stream()
+                .mapToLong(p -> p.getProdQtdEstoque() != null ? p.getProdQtdEstoque() : 0)
+                .sum();
+    }
     public Produto findById(Long id) {
         Optional<Produto> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
