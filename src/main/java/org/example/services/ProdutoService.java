@@ -1,11 +1,10 @@
 package org.example.services;
 
 import org.example.entities.Produto;
+import org.example.repositories.FornecedorRepository;
 import org.example.repositories.ProdutoRepository;
 import org.example.services.exeptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +16,9 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository repository;
 
+    @Autowired
+    private FornecedorRepository fornecedorRepository;
+
     public List<Produto> getAll() {
         return repository.findAll();
     }
@@ -27,6 +29,16 @@ public class ProdutoService {
     }
 
     public Produto insert(Produto produto) {
+        if (produto.getFornecedor() == null || produto.getFornecedor().getForId() == null) {
+            throw new IllegalArgumentException("Fornecedor deve ser informado");
+        }
+
+        Long fornecedorId = produto.getFornecedor().getForId();
+        var fornecedor = fornecedorRepository.findById(fornecedorId)
+                .orElseThrow(() -> new ResourceNotFoundException("Fornecedor não encontrado com id: " + fornecedorId));
+
+        produto.setFornecedor(fornecedor);
+
         return repository.save(produto);
     }
 
@@ -40,6 +52,13 @@ public class ProdutoService {
             produtoSistema.setProdQtdEstoque(produto.getProdQtdEstoque());
             produtoSistema.setProdCategoria(produto.getProdCategoria());
             produtoSistema.setProdMarca(produto.getProdMarca());
+
+            if (produto.getFornecedor() != null && produto.getFornecedor().getForId() != null) {
+                var fornecedor = fornecedorRepository.findById(produto.getFornecedor().getForId())
+                        .orElseThrow(() -> new ResourceNotFoundException("Fornecedor não encontrado com id: " + produto.getFornecedor().getForId()));
+                produtoSistema.setFornecedor(fornecedor);
+            }
+
             repository.save(produtoSistema);
             return true;
         }
